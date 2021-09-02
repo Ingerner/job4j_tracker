@@ -10,7 +10,7 @@ public class Error {
     }
 
     public Error(boolean active, int status, String message) {
-        this.active = active ;
+        this.active = active;
         this.status = status;
         this.message = message;
     }
@@ -26,7 +26,7 @@ public class Error {
         comp.printInfo();
         Error printer = new Error(true, 400, "К работе готов");
         printer.printInfo();
-        Error Computer  = new Error(true, 200, "Hello");
+        Error computer  = new Error(true, 200, "Hello");
         printer.printInfo();
     }
 }
