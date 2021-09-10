@@ -3,7 +3,6 @@ package ru.job4j.pojo;
 public class Library {
 
     public static void main(String[] args) {
-
         Book cleanCode = new Book("Clean Code", 3500);
         Book javaPhilosophy = new Book("Philosophy Java", 3000);
         Book database = new Book("Oracle Database", 1500);
