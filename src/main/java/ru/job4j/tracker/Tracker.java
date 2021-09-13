@@ -12,24 +12,34 @@ public class Tracker {
         items[size++] = item;
         return item;
     }
-// разобраться с данным методом тест проходит но нечего непонятно
+
     public Item[] findAll() {
-        Item[] namesWithoutNull = new Item[items.length];
+        Item[] itemsWithoutNull = new Item[items.length];
         int i = 0;
         for (int index = 0; index < size; index++) {
             if(items[index]!=null) {
-                namesWithoutNull[i] = items[index];
+                itemsWithoutNull[i] = items[index];
+                i++;
+
+            }
+        }
+        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, i);
+        return itemsWithoutNull;
+    }
+
+    public Item[] findByName(String key) {
+        Item[] rez = new Item[size];
+        int i = 0;
+        for (int index = 0; index < size; index++) {
+            if(items[index].getName().equals(key)) {
+                rez[i] = items[index];
                 i++;
             }
         }
-        namesWithoutNull = Arrays.copyOf(namesWithoutNull, i);
-        return namesWithoutNull;
+        rez = Arrays.copyOf(rez, i);
+        return rez;
     }
-/*
-    public Item[] findByName(String key) {
 
-    }
-*/
     public Item findById(int id) {
         Item rsl = null;
         for (int index = 0; index < size; index++) {
