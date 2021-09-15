@@ -9,7 +9,6 @@ public class Book {
         this.count = count;
     }
 
-
     public String getName() {
         return name;
     }

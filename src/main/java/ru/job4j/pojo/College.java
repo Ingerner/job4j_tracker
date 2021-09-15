@@ -12,7 +12,8 @@ public class College {
         student.setPatronymic("Urevich");
         student.setGroup("11");
         student.setDateOfReceipt(new Date());
-        System.out.println("ФИО:" + student.getLastName() +" " + student.getFirstName() +" " + student.getPatronymic());
+        System.out.println("ФИО:" + student.getLastName() + " " + student.getFirstName()
+                + " " + student.getPatronymic());
         System.out.println("Группа-" + student.getGroup());
         System.out.println("Дата поступления" + student.getDateOfReceipt());
     }
