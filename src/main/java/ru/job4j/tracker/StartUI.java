@@ -32,7 +32,7 @@ public class StartUI {
                     System.out.println("Хранилище еще не содержит заявок");
                 }
             } else if (select == 2) {    // Редактирование заявки
-                System.out.println("=== Edit item");
+                System.out.println("=== Edit item ===");
                 System.out.print(" Enter id ");
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter name: ");
@@ -43,7 +43,7 @@ public class StartUI {
                 } else {
                     System.out.println("Oшибка замены заявки.");
                 }
-            } else if (select == 3) {
+            } else if (select == 3) {   //Удаление заявки
                 System.out.println("Delete item");
                 System.out.print(" Enter id ");
                 int id = Integer.parseInt(scanner.nextLine());
@@ -51,6 +51,16 @@ public class StartUI {
                     System.out.println("Заявка удалена успешно.");
                 } else {
                     System.out.println("Ошибка удаления заявки.");
+                }
+            } else if (select == 4) {     //вывод заявки по id
+                System.out.println("=== Find item bu id ===");
+                System.out.print(" Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                Item item = tracker.findById(id);
+                if (item != null) {
+                    System.out.println(item);
+                } else {
+                    System.out.println("Заявка с введенным id " + id + " не найдена");
                 }
             }
         }
