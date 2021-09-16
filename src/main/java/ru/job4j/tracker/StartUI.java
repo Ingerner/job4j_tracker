@@ -19,9 +19,7 @@ public class StartUI {
                 Item item = new Item(name);
                 tracker.add(item);
                 System.out.println("Добавленная заявка: " + item);
-            } else if (select == 6) {  //Выход из меню заявок
-                run = false;
-            } else if (select == 1) {      // Вывод всех заявок
+            }  else if (select == 1) {      // Вывод всех заявок
                 System.out.println("=== Show all items ===");
                 Item[] items = tracker.findAll();
                 if (items.length > 0) {
@@ -62,6 +60,20 @@ public class StartUI {
                 } else {
                     System.out.println("Заявка с введенным id " + id + " не найдена");
                 }
+            } else if (select == 5) {
+                System.out.println("=== Find items by name ===");
+                System.out.print("Enter name:");
+                String name = scanner.nextLine();
+                Item[] items = tracker.findByName(name);
+                if (items.length > 0) {
+                    for (Item item : items) {
+                        System.out.println(item);
+                    }
+                } else {
+                    System.out.println("Заявки с именем " + name + " не найдены");
+                }
+            } else if (select == 6) {  //Выход из меню заявок
+                run = false;
             }
         }
     }
