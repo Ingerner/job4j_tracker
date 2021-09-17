@@ -31,7 +31,7 @@ public class StartUI {
                 }
             } else if (select == 2) {    // Редактирование заявки
                 System.out.println("=== Edit item ===");
-                System.out.print(" Enter id ");
+                System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine();
@@ -43,7 +43,7 @@ public class StartUI {
                 }
             } else if (select == 3) {   //Удаление заявки
                 System.out.println("Delete item");
-                System.out.print(" Enter id ");
+                System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 if (tracker.delete(id)) {
                     System.out.println("Заявка удалена успешно.");
@@ -52,7 +52,7 @@ public class StartUI {
                 }
             } else if (select == 4) {     //вывод заявки по id
                 System.out.println("=== Find item bu id ===");
-                System.out.print(" Enter id: ");
+                System.out.print("Enter id: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 Item item = tracker.findById(id);
                 if (item != null) {
@@ -62,7 +62,7 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ===");
-                System.out.print("Enter name:");
+                System.out.print("Enter name: ");
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
