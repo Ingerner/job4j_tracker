@@ -6,12 +6,16 @@ import java.util.Arrays;
 //import java.util.Scanner;
 
 public class StartUI {
+    public static void createItem(Input input, Tracker tracker) {
+
+    }
+
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             showMenu();
            // System.out.print("Select: ");
-            int select = Integer.parseInt(input.askStr("Select: "));
+            int select = input.askInt("Select: ");
             if (select == 0) {     // Добавление заявки
                 System.out.println("=== Create a new Item ===");
                // System.out.print("Enter name: ");
@@ -94,5 +98,6 @@ public class StartUI {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         new StartUI().init(input, tracker);
+        StartUI.createItem(input, tracker);
     }
 }
