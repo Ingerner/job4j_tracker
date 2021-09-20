@@ -10,11 +10,11 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            System.out.print("Select: ");
+           // System.out.print("Select: ");
             int select = Integer.parseInt(input.askStr("Select: "));
             if (select == 0) {     // Добавление заявки
                 System.out.println("=== Create a new Item ===");
-                System.out.print("Enter name: ");
+               // System.out.print("Enter name: ");
                 String name = input.askStr("Enter name: ");
                 Item item = new Item(name);
                 tracker.add(item);
@@ -31,9 +31,9 @@ public class StartUI {
                 }
             } else if (select == 2) {    // Редактирование заявки
                 System.out.println("=== Edit item ===");
-                System.out.print("Enter id: ");
-                int id = Integer.parseInt(input.askStr("Enter id: "));
-                System.out.print("Enter name: ");
+               // System.out.print("Enter id: ");
+                int id = input.askInt("Enter id: ");
+               // System.out.print("Enter name: ");
                 String name = input.askStr("Enter name: ");
                 Item item = new Item(name);
                 if (tracker.replace(id, item)) {
@@ -43,8 +43,8 @@ public class StartUI {
                 }
             } else if (select == 3) {   //Удаление заявки
                 System.out.println("Delete item");
-                System.out.print("Enter id: ");
-                int id = Integer.parseInt(input.askStr("Enter id: "));
+               // System.out.print("Enter id: ");
+                int id = input.askInt("Enter id: ");
                 if (tracker.delete(id)) {
                     System.out.println("Заявка удалена успешно.");
                 } else {
@@ -52,8 +52,8 @@ public class StartUI {
                 }
             } else if (select == 4) {     //вывод заявки по id
                 System.out.println("=== Find item bu id ===");
-                System.out.print("Enter id: ");
-                int id = Integer.parseInt(input.askStr("Enter id: "));
+               // System.out.print("Enter id: ");
+                int id = input.askInt("Enter id: ");
                 Item item = tracker.findById(id);
                 if (item != null) {
                     System.out.println(item);
@@ -62,7 +62,7 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find items by name ===");
-                System.out.print("Enter name: ");
+                //System.out.print("Enter name: ");
                 String name = input.askStr("Enter name: ");
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
