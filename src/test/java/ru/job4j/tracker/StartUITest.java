@@ -17,4 +17,27 @@ public class StartUITest {
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
+
+    @Test
+    public void whenReplaceItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new Item");
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId()), "replaced item"};
+        StartUI.replaceItem(new StubInput(answers), tracker);
+        Item replased = tracker.findById(item.getId());
+        assertThat(replased.getName(), is("replaced item"));
+    }
+
+    @Test
+    public void deteleItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("delete item");
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId())};
+        StartUI.deteleItem(new StubInput(answers), tracker);
+        Item delete = tracker.findById(item.getId());
+        assertThat(delete.getName(), null);
+
+    }
 }
