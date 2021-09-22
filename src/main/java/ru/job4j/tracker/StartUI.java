@@ -73,14 +73,19 @@ public class StartUI {
         }
     }
 
-    public void init(Input input, Tracker tracker) {
+    public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
-            showMenu();
+            this.showMenu(actions);
             int select = input.askInt("Select: ");
-            if (select == 0) {     // Добавление заявки
+            UserAction action = actions[select];
+            run = action.execute(input, tracker);
+           /* if (select == 0) {     // Добавление заявки
                 StartUI.createItem(input, tracker);
-            }  else if (select == 1) {      // Вывод всех заявок
+            }  else
+            */
+            if (select == 1) {      // Вывод всех заявок
+
                 StartUI.displayAllItem(tracker);
             } else if (select == 2) {    // Редактирование заявки
                 StartUI.replaceItem(input, tracker);
@@ -96,21 +101,18 @@ public class StartUI {
         }
     }
 
-    private void showMenu() {
-        String[] menu = {
-                "Add new Item", "Show all items", "Edit item",
-                "Delete item", "Find item bu id", "Find items by name",
-                "Exit Program"
-        };
+    private void showMenu(UserAction[] actions) {
         System.out.println("Menu");
-        for (int i = 0; i < menu.length; i++) {
-            System.out.println(i + "." + menu[i]);
+        for (int i = 0; i < actions.length; i++) {
+            System.out.println(i + "." + actions[i].name());
         }
     }
 
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        //UserAction actions = new CreateAction[];
+        UserAction[] actions = {new CreateAction()};
+        new StartUI().init(input, tracker, actions);
     }
 }
