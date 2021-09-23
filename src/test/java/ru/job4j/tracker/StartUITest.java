@@ -8,39 +8,42 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-/*
+
     @Test
     public void whenCreateItem() {
-        Input in = new StubInput(new String[]{"0"});
+        Output output = new ConsoleOutput();
+        Input in = new StubInput(new String[]{"0", "Item name", "1"});
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new ExitProgram()};
-        new StartUI().init(in, tracker, actions);
+        UserAction[] actions = {new CreateAction(output), new ExitProgram()};
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
-*/
-    /*
+
+
     @Test
     public void whenReplaceItem() {
+        Output output = new ConsoleOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         String replaceId = Integer.toString(item.getId());
         Input in = new StubInput(new String[]{"0", replaceId, replacedName, "1"});
         UserAction[] actions = {new ReplaceItem(), new ExitProgram()};
-        new StartUI().init(in, tracker, actions);
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
-    }*/
-/*
+    }
+
     @Test
     public void whenDeleteItem() {
+        Output output = new ConsoleOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
         String id = Integer.toString(item.getId());
         Input in = new StubInput(new String[] {"0", id, "1"});
         UserAction[] actions = {new DeteleItem(), new ExitProgram()};
-        new StartUI().init(in, tracker, actions);
+        new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
- */
+
 }
