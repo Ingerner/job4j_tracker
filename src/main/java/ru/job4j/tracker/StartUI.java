@@ -1,8 +1,5 @@
 package ru.job4j.tracker;
 
-import java.lang.reflect.Array;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 //import java.util.Scanner;
 
 public class StartUI {
@@ -34,10 +31,10 @@ public class StartUI {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         //UserAction actions = new CreateAction[];
-        UserAction[] actions = {new CreateAction(output), new DisplayAllItem(),
-                                new ReplaceItem(), new DeteleItem(),
-                                new ReceivingItemId(), new ReceivingItemName(),
-                                new ExitProgram()
+        UserAction[] actions = {new CreateAction(output), new DisplayAllAction(output),
+                                new ReplaceItem(output), new DeteleAction(output),
+                                new ReceivingActionId(output), new ReceivingItemName(),
+                                new Exit(output)
                                 };
         new StartUI(output).init(input, tracker, actions);
     }
