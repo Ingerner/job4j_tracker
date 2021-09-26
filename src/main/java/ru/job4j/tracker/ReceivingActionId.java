@@ -9,7 +9,7 @@ public class ReceivingActionId implements UserAction {
 
     @Override
     public String name() {
-        return "Find item bu id";
+        return " Find item bu id";
     }
 
     @Override

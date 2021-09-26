@@ -10,7 +10,7 @@ public class ReceivingActionName implements UserAction {
 
     @Override
     public String name() {
-        return "Find items by name";
+        return " Find items by name";
     }
 
     @Override
