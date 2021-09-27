@@ -1,5 +1,5 @@
 package ru.job4j.oop;
-//история колобка
+
 public class BallStory {
     public static void main(String[] args) {
         BallStory ball = new BallStory();

@@ -17,12 +17,12 @@ public class Cat {
     }
 
     public static void main(String[] args) {
-       // System.out.println("There are gav's food.");
+        System.out.println("There are gav's food.");
         Cat gav = new Cat();
         gav.eat("kotleta");
         gav.giveNick("Гав");
         gav.show();
-        //System.out.println("There are black's food.");
+        System.out.println("There are black's food.");
         Cat black = new Cat();
         black.eat("fish");
         black.giveNick("Черный");
