@@ -119,7 +119,7 @@ public class StartUITest {
                         + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
                         + "=== Find items by name ===" + ln
-                        + "Item{id=1, name='test1'}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
@@ -131,7 +131,7 @@ public class StartUITest {
         Output out = new  StubOutput();
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
-        String findId = "1";
+        String findId = String.valueOf(one.getId());
         Input in = new StubInput(new String[] {"0", findId, "1"});
         UserAction[] actions = new UserAction[] {new ReceivingActionId(out), new Exit(out)};
         new StartUI(out).init(in, tracker, actions);
