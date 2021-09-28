@@ -97,7 +97,7 @@ public class StartUITest {
                         + "0.Show all items" + ln
                         + "1. Exit Program" + ln
                         + "=== Show all items ===" + ln
-                        + "Item{id=1, name='test1'}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0.Show all items" + ln
                         + "1. Exit Program" + ln
@@ -141,7 +141,7 @@ public class StartUITest {
                         + "0. Find item bu id" + ln
                         + "1. Exit Program" + ln
                         + "=== Find item bu id ===" + ln
-                        + "Item{id=1, name='test1'}" + ln
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Find item bu id" + ln
                         + "1. Exit Program" + ln
