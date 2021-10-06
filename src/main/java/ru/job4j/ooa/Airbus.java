@@ -22,12 +22,7 @@ public final class Airbus extends Airport {
     }
 
     public void printCountEngine() {
-        final int countEngine;
-        if (name.equals("A380")) {
-            countEngine = 4;
-        } else {
-            countEngine = COUNT_ENGINE;
-        }
+        int countEngine = name.equals("A380") ? 4 : COUNT_ENGINE;
         System.out.println("Количество двигателей равно: " + countEngine);
     }
 
