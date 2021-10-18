@@ -28,4 +28,9 @@ public class Person {
     public String getAdress() {
         return adress;
     }
+
+    @Override
+    public String toString() {
+        return name + ", " + surname + ", " + phone + ", " + adress;
+    }
 }
