@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class PassportOfficeTest {
 
     @Test
-    public void addFalse() {
+    public void whenAddSuccessfully() {
         Citizen citizen = new Citizen("2f44a", "Petr Arsentev");
         PassportOffice office = new PassportOffice();
         office.add(citizen);
@@ -17,7 +17,7 @@ public class PassportOfficeTest {
     }
 
     @Test
-    public void add() {
+    public void whenFailedToAdd() {
         Citizen citizen = new Citizen("2f44a", "Petr Arsentev");
         Citizen citizen1 = new Citizen("2f44a", "Matvey Ivanov");
         PassportOffice office = new PassportOffice();
