@@ -6,13 +6,14 @@ import java.util.Formatter;
 import java.util.Objects;
 
 public class Item {
-    private int id;
+    private Integer id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
     private static final DateTimeFormatter FORMATTER
             = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
-    public Item() { }
+    public Item() {
+    }
 
     public Item(String name) {
         this.name = name;
@@ -23,11 +24,11 @@ public class Item {
         this.name = name;
     }
 
-     public LocalDateTime getCreated() {
-         return created;
-     }
+    public LocalDateTime getCreated() {
+        return created;
+    }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -69,4 +70,3 @@ public class Item {
         return Objects.hash(id, name, created);
     }
 }
-
