@@ -18,7 +18,7 @@ public class ItemTest {
         List<Item> expected = Arrays.asList(new Item(1, "one"),  new Item(3, "three"),
                                             new Item(5, "five"));
         Collections.sort(list, new ComporatorUsUp());
-        Assert.assertEquals(list, expected);
+        Assert.assertEquals(expected, list);
 
     }
 
@@ -30,7 +30,7 @@ public class ItemTest {
         List<Item> expected = Arrays.asList(new Item(5, "five"),  new Item(3, "three"),
                                     new Item(1, "one"));
         Collections.sort(list, new ComporatorUsDown());
-        Assert.assertEquals(list, expected);
+        Assert.assertEquals(expected, list);
     }
 
 }
