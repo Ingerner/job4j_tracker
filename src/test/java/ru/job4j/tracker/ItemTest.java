@@ -14,11 +14,11 @@ public class ItemTest {
     public void sortUp() {
 
         List<Item> list = Arrays.asList(new Item(5, "five"),
-                new Item(3, "three "), new Item(1, "one"));
-        List<Item> expected = Arrays.asList(new Item(1, "one"),  new Item(3, "three "),
+                new Item(3, "three"), new Item(1, "one"));
+        List<Item> expected = Arrays.asList(new Item(1, "one"),  new Item(3, "three"),
                                             new Item(5, "five"));
         Collections.sort(list, new ComporatorUsUp());
-        assertThat(list, is(expected));
+        Assert.assertEquals(list, expected);
 
     }
 
@@ -26,11 +26,11 @@ public class ItemTest {
     public void sortDown() {
 
         List<Item> list = Arrays.asList(new Item(5, "five"),
-                new Item(3, "three "), new Item(1, "one"));
-        List<Item> expected = Arrays.asList(new Item(5, "five"),  new Item(3, "three "),
+                new Item(3, "three"), new Item(1, "one"));
+        List<Item> expected = Arrays.asList(new Item(5, "five"),  new Item(3, "three"),
                                     new Item(1, "one"));
         Collections.sort(list, new ComporatorUsDown());
-        assertThat(list, is(expected));
+        Assert.assertEquals(list, expected);
     }
 
 }
