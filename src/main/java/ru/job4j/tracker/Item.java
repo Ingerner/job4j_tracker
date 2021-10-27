@@ -19,7 +19,7 @@ public class Item {
         this.name = name;
     }
 
-    public Item(int id, String name) {
+    public Item(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -32,7 +32,7 @@ public class Item {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -61,7 +61,7 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name)
+        return id.equals(item.id) && Objects.equals(name, item.name)
                 && Objects.equals(created, item.created);
     }
 
