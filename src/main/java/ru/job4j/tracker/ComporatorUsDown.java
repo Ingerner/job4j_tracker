@@ -6,7 +6,7 @@ public class ComporatorUsDown implements Comparator<Item> {
 
     @Override
     public int compare(Item dataFirst, Item dataSecond) {
-        return dataSecond.getId().compareTo(dataFirst.getId());
+        return Integer.compare( dataSecond.getId(), dataFirst.getId());
     }
 }
 

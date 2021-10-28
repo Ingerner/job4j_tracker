@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Item {
-    private Integer id;
+    private int id;
     private String name;
     private LocalDateTime created = LocalDateTime.now();
     private static final DateTimeFormatter FORMATTER
@@ -18,7 +18,7 @@ public class Item {
         this.name = name;
     }
 
-    public Item(Integer id, String name) {
+    public Item(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -31,7 +31,7 @@ public class Item {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,7 +60,7 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return id.equals(item.id) && Objects.equals(name, item.name);
+        return id == item.id && Objects.equals(name, item.name);
     }
 
     @Override
