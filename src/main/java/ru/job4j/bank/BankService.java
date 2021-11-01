@@ -5,13 +5,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * класс выполняет добавление пользователе в систему и банковских счетов.
+ * зволяет переводить деньги с одного банковского счета на другой
+ * @author Korotkiy Oleg
+ * @version 1.0
+ */
 public class BankService {
+    /**
+     * поле содержит всех пользователей системы с привязанными к ним счетами
+     * хранение осуществляется в коллекции типа HashMap
+     * */
     private final Map<User, List<Account>> users = new HashMap<>();
 
+    /**
+     * выполняет добавление пользователя
+     * @param user пользователь
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
 
+    /**
+     * добавляет новый счет к пользователю
+     * (счет добавляется только в том случаи если его нет в системе)
+     * @param passport поле по которому происходит поиск пользователя
+     * @param account добавляемый счет
+     */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -22,6 +42,11 @@ public class BankService {
         }
     }
 
+    /**
+     * выполняет поиск пользователя по номеру паспорта
+     * @param passport номер паспорта
+     * @return возвращает пользователя или null если пользователь не найден
+     */
     public User findByPassport(String passport) {
         for (User user : users.keySet()) {
             if (passport.equals(user.getPassport())) {
@@ -31,6 +56,12 @@ public class BankService {
         return null;
     }
 
+    /**
+     * ищет пользователя по паспорту и ищет у него нужные реквизиты
+     * @param passport номер паспорта
+     * @param requisite реквизиты
+     * @return реквизиты или null если реквизиты не найдены
+     */
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -44,6 +75,17 @@ public class BankService {
         return null;
     }
 
+    /**
+     * выполняет перечесление денежных средств с одношо счета на другой
+     * @param srcPassport номер паспорта пользователя у которого будут списаны денежные средства
+     * @param srcRequisite реквизиты счета списания
+     * @param destPassport номер паспорта пользователя  к которому
+     *                     будут зачислены денежные средства
+     * @param destRequisite реквизиты счета зачисления
+     * @param amount сумма списания
+     * @return false - если счет не найден или не хватает денег на srcRequisite
+     *         true - если операция выполнена успешно
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
