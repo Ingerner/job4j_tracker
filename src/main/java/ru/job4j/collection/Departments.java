@@ -10,17 +10,10 @@ public class Departments {
             String start = "";
             for (String el : value.split("/")) {
                  tmp.add (start  + el);
-                 start = el +"/";
+                 start = "/" + el;
             }
 
         }
-        System.out.println( new ArrayList<>(tmp));
-        return null; //new ArrayList<>(tmp);
+        return new ArrayList<>(tmp);
     }
-
-    public static void main(String[] args) {
-        List<String> input = Arrays.asList("k1/sk1/ssk2", "k2/sk2/ssk2");
-        List<String> result = Departments.fillGaps(input);
-    }
-
 }
