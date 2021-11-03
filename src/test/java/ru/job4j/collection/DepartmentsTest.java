@@ -52,6 +52,4 @@ public class DepartmentsTest {
         );
         assertThat(rsl, greaterThan(0));
     }
-
-
 }
