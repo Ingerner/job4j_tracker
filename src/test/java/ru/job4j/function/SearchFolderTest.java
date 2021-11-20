@@ -6,9 +6,6 @@ import java.util.function.Predicate;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
-
-
-
 public class SearchFolderTest {
     @Test
     public void whenFilterSize() {
