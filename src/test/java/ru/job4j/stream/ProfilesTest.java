@@ -11,16 +11,22 @@ public class ProfilesTest {
 
     @Test
     public void collect() {
-        Address addressOne = new Address("Moscow", "Lenina", 10, 5);
-        Address addressTwo = new Address("Moscow", "Lenina", 2, 9);
-        Address addressTree = new Address("Moscow", "Lenina", 6, 5);
+        Address addressOne = new Address("Moscow", "Lenina", 6, 5);
+        Address addressTwo = new Address("Moscow", "Lenina", 6, 5);
+        Address addressTree = new Address("Madrid", "Fuencarral", 6, 5);
+        Address addressFour = new Address("Berlin", "Wilhelmstrasse", 6, 5);
+        Address addressFive = new Address("Amsterdam", "Kalverstraat", 10, 5);
 
-        List<Address> expected = List.of(addressOne, addressTwo, addressTree);
+
+        List<Address> expected = List.of(addressFive, addressFour, addressTree, addressOne);
 
         List<Profile> profilesList = List.of(
                 new Profile(addressOne),
                 new Profile(addressTwo),
-                new Profile(addressTree)
+                new Profile(addressTree),
+                new Profile(addressFour),
+                new Profile(addressFive)
+
         );
 
         Profiles profiles = new Profiles();
