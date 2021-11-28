@@ -16,10 +16,8 @@ public class ProfilesTest {
         Address addressTree = new Address("Madrid", "Fuencarral", 6, 5);
         Address addressFour = new Address("Berlin", "Wilhelmstrasse", 6, 5);
         Address addressFive = new Address("Amsterdam", "Kalverstraat", 10, 5);
-
-
-        List<Address> expected = List.of(addressFive, addressFour, addressTree, addressOne);
-
+        List<Address> expected = List.of(addressFive, addressFour,
+                                        addressTree, addressOne);
         List<Profile> profilesList = List.of(
                 new Profile(addressOne),
                 new Profile(addressTwo),
