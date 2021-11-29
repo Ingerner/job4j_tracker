@@ -83,11 +83,11 @@ public class SchoolTest {
         Map<String, Student> rsl = sc.convert(students);
         Map<String, Student> expeced;
         expeced = new HashMap<>();
-        expeced.put("Surname1",st1);
-        expeced.put("Surname3",st2);
-        expeced.put("Surname4",st3);
-        expeced.put("Surname6",st4);
-        expeced.put("Surname9",st5);
+        expeced.put("Surname1", st1);
+        expeced.put("Surname3", st2);
+        expeced.put("Surname4", st3);
+        expeced.put("Surname6", st4);
+        expeced.put("Surname9", st5);
         assertThat(rsl, is(expeced));
     }
 }
