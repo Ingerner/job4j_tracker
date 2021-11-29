@@ -11,7 +11,7 @@ public class ListOfNumbersTest {
 
     @Test
     public void convert() {
-        Integer[][] array = new Integer[][] { {1,2}, {3, 4} };
+        Integer[][] array = new Integer[][] {{1, 2}, {3, 4}};
         ListOfNumbers matrix = new ListOfNumbers();
         List<Integer> rsl = matrix.convert(array);
         List<Integer> expected = List.of(1, 2, 3, 4);
