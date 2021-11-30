@@ -42,8 +42,12 @@ public class CardDeck {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Card card = (Card) o;
             return suit == card.suit && value == card.value;
         }
@@ -55,10 +59,10 @@ public class CardDeck {
 
         @Override
         public String toString() {
-            return "Card{" +
-                    "suit=" + suit +
-                    ", value=" + value +
-                    '}';
+            return "Card{"
+                    + "suit=" + suit
+                    + ", value=" + value
+                    + '}';
         }
     }
 
