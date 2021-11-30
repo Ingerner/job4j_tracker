@@ -17,5 +17,4 @@ public class ListOfNumbersTest {
         List<Integer> expected = List.of(1, 2, 3, 4);
         assertThat(rsl, is(expected));
     }
-
 }
