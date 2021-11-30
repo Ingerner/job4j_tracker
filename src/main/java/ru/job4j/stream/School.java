@@ -13,8 +13,11 @@ public class School {
         }
 
         public Map<String, Student> convert(List<Student> students) {
-        return  students.stream().
-               collect(Collectors.
-                toMap(key -> key.getSurname(), st -> st, (st1, st2) -> st1));
+        return  students.stream()
+                        .collect(Collectors.toMap(
+                                key -> key.getSurname(),
+                                st -> st,
+                                (st1, st2) -> st1)
+        );
         }
 }

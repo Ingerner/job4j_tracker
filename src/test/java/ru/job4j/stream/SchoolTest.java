@@ -67,27 +67,23 @@ public class SchoolTest {
     }
 
     @Test
-    public void convert() {
-        List<Student> students = new ArrayList<>();
+    public void whenConvertListWithDuplicatesThenReceiveMapWithFirstElements() {
         Student st1 = new Student(10, "Surname1");
         Student st2 = new Student(30, "Surname3");
         Student st3 = new Student(40, "Surname4");
         Student st4 = new Student(60, "Surname6");
         Student st5 = new Student(90, "Surname9");
-        students.add(st1);
-        students.add(st2);
-        students.add(st3);
-        students.add(st4);
-        students.add(st5);
+        Student st6 = new Student(20, "Surname1");
+         List<Student> students = List.of(st1, st2, st3, st4, st5, st6);
         School sc = new School();
         Map<String, Student> rsl = sc.convert(students);
-        Map<String, Student> expeced;
-        expeced = new HashMap<>();
-        expeced.put("Surname1", st1);
-        expeced.put("Surname3", st2);
-        expeced.put("Surname4", st3);
-        expeced.put("Surname6", st4);
-        expeced.put("Surname9", st5);
+        Map<String, Student> expeced = Map.of(
+                "Surname1", st1,
+                "Surname3", st2,
+                "Surname4", st3,
+                "Surname6", st4,
+                "Surname9", st5
+        );
         assertThat(rsl, is(expeced));
     }
 }
