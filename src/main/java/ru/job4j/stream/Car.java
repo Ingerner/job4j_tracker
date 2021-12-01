@@ -1,12 +1,10 @@
 package ru.job4j.stream;
-
 /**
  * Класс описывает модель данных автомодиля.
  * с помощью шаблона проектирования Builder в  Stream.
  * @author Korotkiy Oleg
  * @version 1.0
  */
-
     public  class Car {
         /** поле название мадель автомобиля   */
         private String name;
