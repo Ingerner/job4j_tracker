@@ -11,7 +11,7 @@ public class Student {
         this.surname = surname;
     }
 
-    public Student(String surname, int scope ) {
+    public Student(String surname, int scope) {
         this.scope = scope;
         this.surname = surname;
     }
