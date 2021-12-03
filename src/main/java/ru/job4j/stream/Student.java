@@ -11,12 +11,25 @@ public class Student {
         this.surname = surname;
     }
 
+    public Student(String surname, int scope ) {
+        this.scope = scope;
+        this.surname = surname;
+    }
+
     public int getScope() {
         return scope;
     }
 
+    public void setScope(int scope) {
+        this.scope = scope;
+    }
+
     public String getSurname() {
         return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override
