@@ -3,25 +3,25 @@ package ru.job4j.stream;
 import java.util.Objects;
 
 public class Student {
-    private int scope;
+    private int score;
     private String surname;
 
     public Student(int scope, String surname) {
-        this.scope = scope;
+        this.score = scope;
         this.surname = surname;
     }
 
     public Student(String surname, int scope) {
-        this.scope = scope;
+        this.score = scope;
         this.surname = surname;
     }
 
-    public int getScope() {
-        return scope;
+    public int getScore() {
+        return score;
     }
 
-    public void setScope(int scope) {
-        this.scope = scope;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getSurname() {
@@ -41,12 +41,12 @@ public class Student {
             return false;
         }
         Student student = (Student) o;
-        return scope == student.scope
+        return score == student.score
                 && Objects.equals(surname, student.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(scope, surname);
+        return Objects.hash(score, surname);
     }
 }
