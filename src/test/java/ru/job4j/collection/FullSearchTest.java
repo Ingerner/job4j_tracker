@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 
 public class FullSearchTest {
 
-
     @Test
     public void extractNumber() {
         List<Task> tasks = Arrays.asList(
