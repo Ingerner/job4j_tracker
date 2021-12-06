@@ -20,7 +20,7 @@ public class PhoneDictionary {
                                     .or(combinePhone)
                                     .or(combineAdress);
         ArrayList<Person> result = new ArrayList<>();
-        for (Person value : persons) {
+        for (var value : persons) {
             if (combine.test(value)) {
                 result.add(value);
             }
