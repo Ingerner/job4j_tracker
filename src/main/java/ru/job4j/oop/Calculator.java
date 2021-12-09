@@ -4,7 +4,7 @@ public class Calculator {
 
     private static int x = 5;
 
-    Calculator calculator = new Calculator();
+
     public static int sum(int y) {
         return x + y;
     }
@@ -22,12 +22,22 @@ public class Calculator {
     }
 
     public int sumAllOperation(int y) {
-        return Calculator.sum(1) +  calculator.multiply(y)
+        Calculator calculator = new Calculator();
+        return Calculator.sum(y) +  calculator.multiply(y)
                + Calculator.minus(y) + calculator.drive(y);
     }
 
     public static void main(String[] args) {
         int result = Calculator.sum(10);
-        System.out.println(result);
+        System.out.println("sum = " +result);
+        Calculator cal = new Calculator();
+        result = cal.multiply(2);
+        System.out.println("multiply = "  +result);
+        result = Calculator.minus(10);
+        System.out.println("minus = "  +result);
+        result = cal.drive(10);
+        System.out.println("drive = " +result);
+        result = cal.sumAllOperation(2);
+        System.out.println("sumAllOperation = " +result);
     }
 }
