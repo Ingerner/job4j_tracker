@@ -13,7 +13,7 @@ public class Calculator {
     }
 
     public static int minus(int y) {
-        return Math.abs(y - x);
+        return y - x;
     }
 
     public int drive(int y) {
@@ -21,9 +21,9 @@ public class Calculator {
     }
 
     public int sumAllOperation(int y) {
-        Calculator calculator = new Calculator();
-        return Calculator.sum(y) +  calculator.multiply(y)
-               + Calculator.minus(y) + calculator.drive(y);
+      //  Calculator calculator = new Calculator();
+        return Calculator.sum(y) +  multiply(y)
+               + Calculator.minus(y) + drive(y);
     }
 
     public static void main(String[] args) {
