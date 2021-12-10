@@ -21,7 +21,6 @@ public class Calculator {
     }
 
     public int sumAllOperation(int y) {
-      //  Calculator calculator = new Calculator();
         return Calculator.sum(y) +  multiply(y)
                + Calculator.minus(y) + drive(y);
     }
