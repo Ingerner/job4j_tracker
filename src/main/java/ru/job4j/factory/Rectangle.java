@@ -1,9 +1,10 @@
-package ru.job4j.factoryMethod;
+package ru.job4j.factory;
 
 public class Rectangle implements Shape {
 
-    int a;
-    int b;
+    private int a;
+    private int b;
+
     public Rectangle(int a, int b) {
         this.a = a;
         this.b = b;

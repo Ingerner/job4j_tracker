@@ -1,4 +1,4 @@
-package ru.job4j.factoryMethod;
+package ru.job4j.factory;
 
 import java.util.Scanner;
 

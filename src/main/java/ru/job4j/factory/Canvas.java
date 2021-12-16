@@ -1,4 +1,4 @@
-package ru.job4j.factoryMethod;
+package ru.job4j.factory;
 
 import java.util.Scanner;
 
@@ -20,12 +20,10 @@ public class Canvas {
         String ans = input.nextLine();
         if ("прямоугольник".equals(ans)) {
             operator = new RectangleOperator();
-        }
-        else {
+        } else {
             operator = new TriangleOperator();
         }
-        Canvas canvas= new Canvas(operator);
+        Canvas canvas = new Canvas(operator);
         canvas.demonstrate();
-
     }
 }
