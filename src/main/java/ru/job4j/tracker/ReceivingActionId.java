@@ -13,7 +13,7 @@ public class ReceivingActionId implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker tracker) {
         out.println("=== Find item bu id ===");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);

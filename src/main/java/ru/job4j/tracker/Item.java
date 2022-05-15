@@ -11,6 +11,7 @@ public class Item {
     private int id;
     private String name;
 
+
     public Item() {
     }
 
@@ -45,10 +46,11 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + '}';
+        return String.format("id: %s, name: %s, " +
+                "created: %s",
+                id,
+                name,
+                FORMATTER.format(created));
     }
 
     @Override
