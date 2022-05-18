@@ -1,15 +1,17 @@
 package ru.job4j.tracker;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.util.List;
 import java.util.Properties;
 
 public class SqlTracker implements Store, AutoCloseable {
 
     private Connection cn;
+
+    public SqlTracker() throws Exception {
+        init();
+    }
 
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")){
@@ -37,7 +39,15 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public Item add(Item item) {
-        return null;
+        try (PreparedStatement statement =
+                     cn.prepareStatement("insert into tracker(name, date) values (?, ?)")) {
+            statement.setString(1, item.getName());
+            statement.setDate(2, Date.valueOf(item.getCreated().toLocalDate()));
+            statement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
