@@ -139,12 +139,12 @@ public class StartUITest {
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(
                 "Menu:" + ln
-                        + "0. Find item bu id" + ln
+                        + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
-                        + "=== Find item bu id ===" + ln
+                        + "=== Find item by id ===" + ln
                         + one + ln
                         + "Menu:" + ln
-                        + "0. Find item bu id" + ln
+                        + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
                         + "=== Exit Program ===" + ln));
     }

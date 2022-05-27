@@ -33,20 +33,21 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        MemTracker tracker = new MemTracker();
-        //SqlTracker sqlTracker = new SqlTracker();
-        //0sqlTracker.init();
-        List<UserAction> actions = Arrays.asList(
-                new CreateAction(output), new DisplayAllAction(output),
-                new ReplaceItem(output), new DeteleAction(output),
-                new ReceivingActionId(output), new ReceivingActionName(output),
-                new Exit(output)
-        );
+        try (SqlTracker sqlTracker = new SqlTracker()) {
+            sqlTracker.init();
+            List<UserAction> actions = Arrays.asList(
+                    new CreateAction(output), new DisplayAllAction(output),
+                    new ReplaceItem(output), new DeteleAction(output),
+                    new ReceivingActionId(output), new ReceivingActionName(output),
+                    new Exit(output)
+            );
+            new StartUI(output).init(input, sqlTracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        new StartUI(output).init(input, tracker, actions);
-        //new StartUI(output).init(input, sqlTracker, actions);
     }
 }

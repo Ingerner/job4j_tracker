@@ -11,8 +11,8 @@ public class Item {
     private int id;
     private String name;
 
-
     public Item() {
+
     }
 
     public Item(String name) {
@@ -22,6 +22,12 @@ public class Item {
     public Item(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Item(int id, String name, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.created = created;
     }
 
     public LocalDateTime getCreated() {
@@ -46,8 +52,8 @@ public class Item {
 
     @Override
     public String toString() {
-        return String.format("id: %s, name: %s, " +
-                "created: %s",
+        return String.format("id: %s, name: %s, "
+                + "created: %s",
                 id,
                 name,
                 FORMATTER.format(created));
