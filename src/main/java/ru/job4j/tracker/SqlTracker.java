@@ -90,13 +90,7 @@ public class SqlTracker implements Store, AutoCloseable {
         List<Item> list = new ArrayList<>();
         try (PreparedStatement statement = cn.prepareStatement("select * from items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    list.add(new Item(
-                            resultSet.getInt(1),
-                            resultSet.getString(2),
-                            resultSet.getTimestamp(3).toLocalDateTime()
-                    ));
-                }
+                param(resultSet);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,14 +105,7 @@ public class SqlTracker implements Store, AutoCloseable {
                 "select * from items where name like ?")) {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    list.add(new Item(
-                            resultSet.getInt(1),
-                            resultSet.getString(2),
-                            resultSet.getTimestamp(3).toLocalDateTime()
-
-                    ));
-                }
+                list.add(param(resultSet));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,14 +119,22 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement statement = cn.prepareStatement(
                 "select * from items where id = ?;")) {
             statement.setInt(1, id);
-            try (ResultSet res = statement.executeQuery()) {
-                if (res.next()) {
-                    item = new Item(res.getInt(1),
-                            res.getString(2));
-                }
+            try (ResultSet resultSet = statement.executeQuery()) {
+                param(resultSet);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+        return item;
+    }
+
+    public Item param(ResultSet resultSet) throws SQLException {
+      Item item = null;
+        while (resultSet.next()) {
+            item = new Item(resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getTimestamp(3).toLocalDateTime()
+            );
         }
         return item;
     }
