@@ -90,7 +90,9 @@ public class SqlTracker implements Store, AutoCloseable {
         List<Item> list = new ArrayList<>();
         try (PreparedStatement statement = cn.prepareStatement("select * from items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
-                param(resultSet);
+                while (resultSet.next()) {
+                    list.add(param(resultSet));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +107,9 @@ public class SqlTracker implements Store, AutoCloseable {
                 "select * from items where name like ?")) {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
-                list.add(param(resultSet));
+                while (resultSet.next()) {
+                    list.add(param(resultSet));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +124,9 @@ public class SqlTracker implements Store, AutoCloseable {
                 "select * from items where id = ?;")) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                param(resultSet);
+               if (resultSet.next()) {
+                   item = param(resultSet);
+               }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -129,14 +135,18 @@ public class SqlTracker implements Store, AutoCloseable {
     }
 
     public Item param(ResultSet resultSet) throws SQLException {
-      Item item = null;
-        while (resultSet.next()) {
-            item = new Item(resultSet.getInt(1),
-                    resultSet.getString(2),
-                    resultSet.getTimestamp(3).toLocalDateTime()
-            );
-        }
-        return item;
+//      Item item = null;
+//        while (resultSet.next()) {
+//            item = new Item(resultSet.getInt(1),
+//                    resultSet.getString(2),
+//                    resultSet.getTimestamp(3).toLocalDateTime()
+//            );
+//        }
+//        return item;
+//    }
+        return new Item(resultSet.getInt(1),
+                resultSet.getString(2),
+                resultSet.getTimestamp(3).toLocalDateTime()
+        );
     }
-
 }
