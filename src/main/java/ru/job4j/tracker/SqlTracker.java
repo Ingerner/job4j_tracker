@@ -135,15 +135,6 @@ public class SqlTracker implements Store, AutoCloseable {
     }
 
     public Item param(ResultSet resultSet) throws SQLException {
-//      Item item = null;
-//        while (resultSet.next()) {
-//            item = new Item(resultSet.getInt(1),
-//                    resultSet.getString(2),
-//                    resultSet.getTimestamp(3).toLocalDateTime()
-//            );
-//        }
-//        return item;
-//    }
         return new Item(resultSet.getInt(1),
                 resultSet.getString(2),
                 resultSet.getTimestamp(3).toLocalDateTime()
