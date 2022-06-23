@@ -68,7 +68,8 @@ public class Item {
             return false;
         }
         Item item = (Item) o;
-        return id == item.id && Objects.equals(name, item.name);
+        return id == item.id && Objects.equals(created.withNano(0),
+                item.created.withNano(0)) && Objects.equals(name, item.name);
     }
 
     @Override

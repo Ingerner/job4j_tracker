@@ -10,6 +10,10 @@ public class SqlTracker implements Store, AutoCloseable {
 
     private Connection cn;
 
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
     public SqlTracker() throws Exception {
         init();
     }
@@ -41,7 +45,7 @@ public class SqlTracker implements Store, AutoCloseable {
     @Override
     public Item add(Item item) {
         try (PreparedStatement statement =
-                     cn.prepareStatement("insert into items(name, create_date) values (?, ?)",
+                     cn.prepareStatement("insert into items(name, created) values (?, ?)",
                              Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
@@ -61,7 +65,7 @@ public class SqlTracker implements Store, AutoCloseable {
     public boolean replace(int id, Item item) {
         boolean result = false;
         try (PreparedStatement statement = cn.prepareStatement(
-                "update items set name = ?, create_date = ? where id = ?")) {
+                "update items set name = ?, created = ? where id = ?")) {
             statement.setString(1, item.getName());
             statement.setInt(3, id);
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
