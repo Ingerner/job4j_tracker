@@ -1,7 +1,9 @@
 package ru.job4j.map;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AnalyzeByMap {
     //*вычисляет общий средний балл*/
@@ -36,11 +38,13 @@ public class AnalyzeByMap {
                 sumSt += s.getScore();
             }
             rsl.add(new Label(p.name(), sumSt/listSubject.size()));
+            sumSt = 0;
         }
         return rsl;
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
+        Map<String, Integer> map = new LinkedHashMap<>();
         return List.of();
     }
 
@@ -52,32 +56,4 @@ public class AnalyzeByMap {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(AnalyzeByMap.averageScoreBySubject(
-                List.of(
-                        new Pupil("Ivanov",
-                                List.of(
-                                        new Subject("Math", 70),
-                                        new Subject("Lang", 90),
-                                        new Subject("Philosophy", 100)
-                                )
-                        ),
-                        new Pupil("Petrov",
-                                List.of(
-                                        new Subject("Math", 60),
-                                        new Subject("Lang", 60),
-                                        new Subject("Philosophy", 60)
-                                )
-                        ),
-                        new Pupil("Sidorov",
-                                List.of(
-                                        new Subject("Math", 80),
-                                        new Subject("Lang", 60),
-                                        new Subject("Philosophy", 50)
-                                )
-                        )
-                )
-        ));
-
-    }
 }
