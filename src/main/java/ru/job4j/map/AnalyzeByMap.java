@@ -43,8 +43,15 @@ public class AnalyzeByMap {
         return rsl;
     }
 
+    //*вычисляет средний балл по каждому предмету//
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                map.put(subject.getName(), subject.getScore());
+            }
+        }
+
         return List.of();
     }
 
