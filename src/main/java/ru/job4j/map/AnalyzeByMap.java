@@ -48,11 +48,19 @@ public class AnalyzeByMap {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                map.put(subject.getName(), subject.getScore());
+                int score = subject.getScore();
+                if (map.containsKey(subject.getName())) {
+                    score = map.get(subject.getName()) + score;
+                }
+                map.put(subject.getName(), score);
             }
         }
+        List<Label> list = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            list.add(new Label(entry.getKey(), entry.getValue()/pupils.size()));
+        }
 
-        return List.of();
+        return list;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
