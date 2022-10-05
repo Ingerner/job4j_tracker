@@ -37,7 +37,7 @@ public class AnalyzeByMap {
             for (Subject s: listSubject) {
                 sumSt += s.getScore();
             }
-            rsl.add(new Label(p.name(), sumSt/listSubject.size()));
+            rsl.add(new Label(p.name(), sumSt / listSubject.size()));
             sumSt = 0;
         }
         return rsl;
@@ -57,7 +57,7 @@ public class AnalyzeByMap {
         }
         List<Label> list = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
-            list.add(new Label(entry.getKey(), entry.getValue()/pupils.size()));
+            list.add(new Label(entry.getKey(), entry.getValue() / pupils.size()));
         }
 
         return list;
