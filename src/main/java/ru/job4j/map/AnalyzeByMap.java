@@ -8,8 +8,6 @@ public class AnalyzeByMap {
         double sumStudnts = 0;
         double sumAvg = 0;
         double sumSt = 0;
-        int k = 0;
-        double avg = 0;
         for (int i = 0; i < pupils.size(); i++) {
             listSubject = pupils.get(i).subjects();
             for (int j = 0; j < listSubject.size(); j++) {
@@ -26,7 +24,6 @@ public class AnalyzeByMap {
         double sumSt = 0;
         List<Subject> listSubject = new ArrayList<>();
         List<Label> rsl = new ArrayList<>();
-        int i = 0;
         for (Pupil p : pupils) {
            listSubject = p.subjects();
             for (Subject s: listSubject) {
