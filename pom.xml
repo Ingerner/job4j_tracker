@@ -17,6 +17,15 @@
                     <propertyFile>db/liquibase.properties</propertyFile>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.15.0</version>
+                <configuration>
+                    <propertyFile>db/liquibase.properties</propertyFile>
+                </configuration>
+            </plugin>
 	   <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
@@ -136,7 +145,13 @@
     </profiles>
 
     <dependencies>
+
         <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.16.1</version>
+        </dependency>
+            <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>1.3</version>
