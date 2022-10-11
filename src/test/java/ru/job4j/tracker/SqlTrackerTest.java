@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
@@ -56,4 +57,51 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
+    @Test
+    public void itemMustBeReplace() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        item.setName("one");
+        tracker.replace(item.getId(), item);
+        assertThat(tracker.findById(item.getId()), is(item));
+
+    }
+
+    @Test
+    public void itemMustBeReplacDelete() throws Exception {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        assertThat(tracker.findById(item.getId()), is(item));
+
+    }
+
+    @Test
+    public void  numberOfApplicationsMustBeEqualToThoseFound() throws Exception {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        tracker.add(item1);
+        tracker.add(item2);
+        List<Item> list = tracker.findAll();
+        assertThat(list.size(), is(2));
+    }
+
+    @Test
+    public void searchesForItemWithTheGivenName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        assertThat(tracker.findByName(item.getName()).get(0), is(item));
+    }
+
+    @Test
+    public void searchForAnApplicationById() throws Exception {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        assertThat(tracker.findById(item.getId()), is(item));
+
+    }
 }
