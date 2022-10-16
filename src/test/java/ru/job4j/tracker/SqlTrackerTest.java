@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class SqlTrackerTest {
@@ -31,7 +32,6 @@ public class SqlTrackerTest {
                     config.getProperty("url"),
                     config.getProperty("username"),
                     config.getProperty("password")
-
             );
         } catch (Exception e) {
             throw new IllegalStateException(e);
@@ -39,22 +39,27 @@ public class SqlTrackerTest {
     }
 
     @AfterClass
-    public static void closeConnection() throws SQLException {
-        connection.close();
+    public static void closeConnection() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @After
-    public void wipeTable() throws SQLException {
+    public void wipeTable()  {
         try (PreparedStatement statement = connection.prepareStatement("delete from items")) {
             statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     @Test
     public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
+        Item item = tracker.add(new Item("item"));
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
@@ -66,11 +71,10 @@ public class SqlTrackerTest {
         item.setName("one");
         tracker.replace(item.getId(), item);
         assertThat(tracker.findById(item.getId()), is(item));
-
     }
 
     @Test
-    public void itemMustBeReplacDelete() throws Exception {
+    public void itemMustBeReplacDelete() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
@@ -79,30 +83,33 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void  numberOfApplicationsMustBeEqualToThoseFound() throws Exception {
+    public void  numberOfApplicationsMustBeEqualToThoseFound()  {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item1 = new Item("item1");
-        Item item2 = new Item("item2");
-        tracker.add(item1);
-        tracker.add(item2);
+        Item item1 =  tracker.add(new Item("item1"));
+        Item item2 =  tracker.add(new Item("item2"));
         List<Item> list = tracker.findAll();
-        assertThat(list.size(), is(2));
+        assertThat(list, is(List.of(item1, item2)));
     }
 
     @Test
     public void searchesForItemWithTheGivenName() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
+        Item item = tracker.add(new Item("item"));
         assertThat(tracker.findByName(item.getName()).get(0), is(item));
     }
 
     @Test
-    public void searchForAnApplicationById() throws Exception {
+    public void searchForAnApplicationById() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
-        assertThat(tracker.findById(item.getId()), is(item));
+        Item item = tracker.add(new Item("item"));
+        assertThat(tracker.findByName("item"), is(item));
+    }
 
+    @Test
+    public void itemMustBeDelete() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = tracker.add(new Item("item"));
+        tracker.delete(item.getId());
+        assertNull(tracker.findById(item.getId()));
     }
 }
