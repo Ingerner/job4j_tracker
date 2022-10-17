@@ -64,17 +64,16 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void itemMustBeReplace() {
+    public void whenItemMustBeReplace() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item item = new Item("item");
-        tracker.add(item);
-        item.setName("one");
+        Item item = tracker.add(new Item("item"));
+        item.setName("item1");
         tracker.replace(item.getId(), item);
         assertThat(tracker.findById(item.getId()), is(item));
     }
 
     @Test
-    public void itemMustBeReplacDelete() {
+    public void whenItemMustBeReplacDelete() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
@@ -83,7 +82,7 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void  numberOfApplicationsMustBeEqualToThoseFound()  {
+    public void  whenNumberOfApplicationsMustBeEqualToThoseFound()  {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 =  tracker.add(new Item("item1"));
         Item item2 =  tracker.add(new Item("item2"));
@@ -92,21 +91,21 @@ public class SqlTrackerTest {
     }
 
     @Test
-    public void searchesForItemWithTheGivenName() {
+    public void whenSearchesForItemWithTheGivenName() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item"));
-        assertThat(tracker.findByName(item.getName()).get(0), is(item));
+        assertThat(tracker.findByName(item.getName()), is(List.of(item)));
     }
 
     @Test
-    public void searchForAnApplicationById() {
+    public void whenSearchForAnApplicationById() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item"));
-        assertThat(tracker.findByName("item"), is(item));
+        assertThat(tracker.findById(item.getId()), is(item));
     }
 
     @Test
-    public void itemMustBeDelete() {
+    public void whenItemMustBeDelete() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item"));
         tracker.delete(item.getId());
