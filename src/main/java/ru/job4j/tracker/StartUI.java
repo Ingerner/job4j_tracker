@@ -36,18 +36,20 @@ public class StartUI {
     public static void main(String[] args) throws Exception {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-//        try (SqlTracker sqlTracker = new SqlTracker()) {
-//            sqlTracker.init();
-//            List<UserAction> actions = Arrays.asList(
-//                    new CreateAction(output), new DisplayAllAction(output),
-//                    new ReplaceItem(output), new DeteleAction(output),
-//                    new ReceivingActionId(output), new ReceivingActionName(output),
-//                    new Exit(output)
-//            );
-//            new StartUI(output).init(input, sqlTracker, actions);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+/*        try (SqlTracker sqlTracker = new SqlTracker()) {
+            sqlTracker.init();
+            List<UserAction> actions = Arrays.asList(
+                    new CreateAction(output), new DisplayAllAction(output),
+                    new ReplaceItem(output), new DeteleAction(output),
+                    new ReceivingActionId(output), new ReceivingActionName(output),
+                    new Exit(output)
+            );
+            new StartUI(output).init(input, sqlTracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+ */
         MemTracker memTracker = new MemTracker();
         List<UserAction> actions = Arrays.asList(
                     new CreateAction(output), new DisplayAllAction(output),
